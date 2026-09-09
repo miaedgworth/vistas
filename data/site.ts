@@ -8,7 +8,7 @@ export const site = {
   tagline: "The perfect place to watch Guernsey's stunning sunset.",
   description:
     "Beach cafe on Vazon Bay, Guernsey. Locally prepared food, coffee and cakes, indoor and outdoor seating, and a roof terrace with the best sunset views on the west coast. Open 8am–5pm every day, no bookings needed.",
-  url: "https://vistas.vercel.app",
+  url: "https://vistas-rouge.vercel.app",
   phone: "01481 252513",
   phoneHref: "tel:+441481252513",
   email: "vistasgsy@gmail.com",
