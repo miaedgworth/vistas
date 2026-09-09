@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Callout, PageHeader, SectionLabel } from "@/components/ui";
-import { site, addressLine } from "@/data/site";
+import MapEmbed from "@/components/MapEmbed";
+import { site } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Contact & find us",
@@ -106,15 +107,7 @@ export default function ContactPage() {
           {/* Map */}
           <div>
             <div className="overflow-hidden rounded-3xl shadow-sm ring-1 ring-teal/10">
-              <iframe
-                title={`Map showing ${site.name} at ${addressLine}`}
-                src={site.mapsEmbed}
-                width="600"
-                height="450"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="h-[380px] w-full border-0 sm:h-[450px]"
-              />
+              <MapEmbed />
             </div>
             <p className="mt-4 text-sm">
               <a

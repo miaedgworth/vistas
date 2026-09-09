@@ -16,10 +16,9 @@ npm run build   # static site written to ./out
 
 | Route | What's on it |
 |---|---|
-| `/` | Hero, opening-hours cards, intro, photo strip, Sundown Sessions + Clean for Ice Cream teasers |
+| `/` | Hero, opening-hours cards, intro, photo strip, Sundown Sessions teaser, Clean for Ice Cream (full section), address + map |
 | `/about` | The cafe, seating, merch & gift cards |
 | `/events` | Sundown Sessions — tabbed line-ups by season, Facebook video link, private bookings |
-| `/beach-clean` | Clean for Ice Cream, the three steps |
 | `/contact` | Address, phone, email, Facebook, Google Map, opening hours |
 
 ---
@@ -110,11 +109,18 @@ Two illustrations in `public/images/` are hand-authored SVG in the brand
 palette (flat, poster-style, matching the Sundown Sessions look):
 
 - `hero-vazon-sunset.svg` — the home hero
-- `beach-clean.svg` — the Clean for Ice Cream page
+- `beach-clean.svg` — the Clean for Ice Cream section on the home page
 
 They're vector, so they stay sharp at any size and cost a few KB each. Edit
-them with any SVG tool, or replace them with photography — they're referenced
-from `app/page.tsx` and `app/beach-clean/page.tsx`.
+them with any SVG tool, or replace them with photography — both are referenced
+from `app/page.tsx`.
+
+Clean for Ice Cream lives on the home page as a full section (anchored at
+`#clean-for-ice-cream`) rather than a page of its own, so it isn't in the top
+nav. The nav links are the `links` array at the top of `components/Nav.tsx`.
+
+The Google Map is `components/MapEmbed.tsx`, shared by the home and contact
+pages. It reads `mapsEmbed` from `data/site.ts` — no API key needed.
 
 `design/brand-src/` holds the SVG marks drawn before the real logo files
 arrived. Nothing in the site uses them now; they're kept only as a fallback.

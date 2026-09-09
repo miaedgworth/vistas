@@ -5,7 +5,7 @@ import { site } from "@/data/site";
 // Route handlers must be static for `output: export`.
 export const dynamic = "force-static";
 
-const routes = ["", "/about", "/events", "/beach-clean", "/contact"];
+const routes = ["", "/about", "/events", "/contact"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({
