@@ -38,17 +38,8 @@ export default function SessionVideo() {
           allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
         />
       </div>
-      <figcaption className="mt-4 text-center text-sm text-teal/70">
-        Starts muted —{" "}
-        <a
-          href={site.facebookVideo}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline decoration-oak underline-offset-4 hover:text-ray"
-        >
-          watch it on Facebook
-        </a>{" "}
-        for sound.
+      <figcaption className="mt-4 text-center text-xs text-teal/60">
+        Video by {site.videoCredit}
       </figcaption>
     </figure>
   );

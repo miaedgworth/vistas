@@ -14,6 +14,7 @@ export const site = {
   email: "vistasgsy@gmail.com",
   facebook: "https://www.facebook.com/people/Vistas-Beach-Cafe/61554066410905/",
   facebookVideo: "https://www.facebook.com/share/r/18SofFgS9s/?mibextid=wwXIfr",
+  videoCredit: "Ross at @skywavephotography",
   address: {
     street: "Vazon Rd",
     locality: "Castel",
