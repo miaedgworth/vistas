@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Button, Callout, PageHeader, SectionLabel } from "@/components/ui";
 import SeasonTabs from "@/components/SeasonTabs";
 import SessionVideo from "@/components/SessionVideo";
-import { pastSeasons, upcomingSeasons } from "@/data/events";
-import { site } from "@/data/site";
+import { getContent, getSeasons, getSettings, telHref } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Events — Sundown Sessions",
@@ -12,23 +11,30 @@ export const metadata: Metadata = {
   alternates: { canonical: "/events" },
 };
 
-export default function EventsPage() {
+export default async function EventsPage() {
+  const [t, settings, seasons] = await Promise.all([
+    getContent(),
+    getSettings(),
+    getSeasons(),
+  ]);
+  const upcomingSeasons = seasons.filter((s) => s.status === "upcoming");
+  const pastSeasons = seasons.filter((s) => s.status === "past");
   const hasUpcoming = upcomingSeasons.length > 0;
 
   return (
     <>
       <PageHeader
-        label="What's on at Vistas"
-        title="Events"
-        intro="Sundown Sessions are our summer DJ and live-music evenings — music into the evening while the sun drops over the bay."
+        label={t["events.label"]}
+        title={t["events.title"]}
+        intro={t["events.intro"]}
       />
 
       {/* ------------------------------------------------ upcoming events */}
       <section className="mx-auto max-w-5xl px-4 pb-16 pt-12 sm:px-6 sm:pb-20 sm:pt-16">
         <div className="text-center">
-          <SectionLabel>What&rsquo;s coming up</SectionLabel>
+          <SectionLabel>{t["events.upcoming.label"]}</SectionLabel>
           <h2 className="mt-4 text-3xl font-medium tracking-brand sm:text-4xl">
-            Upcoming events
+            {t["events.upcoming.heading"]}
           </h2>
         </div>
 
@@ -39,16 +45,13 @@ export default function EventsPage() {
         ) : (
           <div className="mx-auto mt-10 max-w-2xl rounded-3xl bg-white/70 p-9 text-center ring-1 ring-teal/10 sm:p-11">
             <p className="text-lg leading-relaxed text-teal/85">
-              That&rsquo;s the season done — the last Sundown Session has been and
-              gone.
+              {t["events.empty.p1"]}
             </p>
             <p className="mt-4 text-base leading-relaxed text-teal/75">
-              Next summer&rsquo;s dates usually land in the spring, and they go up
-              on Facebook first. The cafe is open as normal in the meantime,
-              8am&ndash;5pm every day.
+              {t["events.empty.p2"]}
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <Button href={site.facebook} variant="solid" external>
+              <Button href={settings.facebook} variant="solid" external>
                 <svg
                   width="18"
                   height="18"
@@ -72,13 +75,13 @@ export default function EventsPage() {
       <section className="bg-white/60 py-16 sm:py-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <div className="text-center">
-            <SectionLabel>A taste of it</SectionLabel>
+            <SectionLabel>{t["events.video.label"]}</SectionLabel>
             <h2 className="mt-4 text-3xl font-medium tracking-brand sm:text-4xl">
-              Watch a session
+              {t["events.video.heading"]}
             </h2>
           </div>
           <div className="mt-10">
-            <SessionVideo />
+            <SessionVideo credit={settings.videoCredit} />
           </div>
         </div>
       </section>
@@ -86,14 +89,12 @@ export default function EventsPage() {
       {/* ------------------------------------------------------ past events */}
       <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20">
         <div className="mb-10 text-center">
-          <SectionLabel>Previous seasons</SectionLabel>
+          <SectionLabel>{t["events.past.label"]}</SectionLabel>
           <h2 className="mt-4 text-3xl font-medium tracking-brand sm:text-4xl">
-            Past events
+            {t["events.past.heading"]}
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-teal/75">
-            How the Sundown Sessions have run: music into the evening, food
-            served until 7pm, a mobile beer bar, over-18s later on with ID, and
-            the high tide time alongside each date.
+            {t["events.past.intro"]}
           </p>
         </div>
         <SeasonTabs seasons={pastSeasons} />
@@ -101,20 +102,20 @@ export default function EventsPage() {
 
       {/* ------------------------------------------------ private bookings */}
       <section className="mx-auto max-w-3xl px-4 pb-20 sm:px-6 sm:pb-24">
-        <Callout title="Available for private bookings and events">
-          <p>Planning something? Get in touch and we&rsquo;ll talk it through.</p>
+        <Callout title={t["events.bookings.title"]}>
+          <p>{t["events.bookings.body"]}</p>
           <p className="mt-4 flex flex-wrap gap-x-6 gap-y-2 font-medium">
             <a
-              href={`mailto:${site.email}`}
+              href={`mailto:${settings.email}`}
               className="underline decoration-oak underline-offset-4 hover:text-ray"
             >
-              {site.email}
+              {settings.email}
             </a>
             <a
-              href={site.phoneHref}
+              href={telHref(settings.phone)}
               className="underline decoration-oak underline-offset-4 hover:text-ray"
             >
-              {site.phone}
+              {settings.phone}
             </a>
           </p>
         </Callout>

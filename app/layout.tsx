@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Jost, Montserrat } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import { site, addressLine } from "@/data/site";
+import { site } from "@/data/site";
+import { addressLine, getSettings, mapsLink, telHref } from "@/lib/content";
 import "./globals.css";
 
 const jost = Jost({
@@ -57,63 +58,62 @@ export const metadata: Metadata = {
     description: site.description,
     images: ["/og.png"],
   },
-  icons: {
-    icon: "/icon.png",
-    apple: "/apple-icon.png",
-  },
+  icons: { icon: "/icon.png", apple: "/apple-icon.png" },
 };
 
-/** LocalBusiness / CafeOrCoffeeShop structured data for rich results. */
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "CafeOrCoffeeShop",
-  name: site.name,
-  description: site.description,
-  url: site.url,
-  telephone: `+44 ${site.phone.replace(/^0/, "").replace(/\s/g, "")}`,
-  email: site.email,
-  image: `${site.url}/og.png`,
-  logo: `${site.url}/brand/logo-badge-colour.png`,
-  priceRange: "££",
-  servesCuisine: ["Coffee", "Cafe", "Cakes"],
-  sameAs: [site.facebook],
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: site.address.street,
-    addressLocality: site.address.locality,
-    addressRegion: site.address.region,
-    postalCode: site.address.postcode,
-    addressCountry: site.address.country,
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: site.geo.lat,
-    longitude: site.geo.lng,
-  },
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
-      ],
-      opens: site.hours.opens,
-      closes: site.hours.closes,
-    },
-  ],
-  hasMap: site.mapsLink,
-  publicAccess: true,
-  smokingAllowed: false,
-};
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const settings = await getSettings();
+
+  /** LocalBusiness / CafeOrCoffeeShop structured data, built from live settings. */
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    name: site.name,
+    description: site.description,
+    url: site.url,
+    telephone: telHref(settings.phone).replace("tel:", ""),
+    email: settings.email,
+    image: `${site.url}/og.png`,
+    logo: `${site.url}/brand/logo-badge-colour.png`,
+    priceRange: "££",
+    servesCuisine: ["Coffee", "Cafe", "Cakes"],
+    sameAs: [settings.facebook],
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: settings.addressStreet,
+      addressLocality: settings.addressLocality,
+      addressRegion: settings.addressRegion,
+      postalCode: settings.addressPostcode,
+      addressCountry: "GG",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: site.geo.lat,
+      longitude: site.geo.lng,
+    },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ],
+        opens: settings.hoursOpens,
+        closes: settings.hoursCloses,
+      },
+    ],
+    hasMap: mapsLink(settings),
+    publicAccess: true,
+    smokingAllowed: false,
+  };
+
   return (
     <html lang="en-GB" className={`${jost.variable} ${montserrat.variable}`}>
       <body className="flex min-h-screen flex-col bg-sand text-teal antialiased">
@@ -127,13 +127,13 @@ export default function RootLayout({
         <main id="main" className="flex-1">
           {children}
         </main>
-        <Footer />
+        <Footer settings={settings} />
         <script
           type="application/ld+json"
-          // Structured data is a static, locally-authored object.
+          // Structured data is a locally-authored object, not user HTML.
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <span className="sr-only">{addressLine}</span>
+        <span className="sr-only">{addressLine(settings)}</span>
       </body>
     </html>
   );

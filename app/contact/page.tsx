@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { Callout, PageHeader, SectionLabel } from "@/components/ui";
 import MapEmbed from "@/components/MapEmbed";
-import { site } from "@/data/site";
+import {
+  getContent,
+  getSettings,
+  mapsLink,
+  telHref,
+} from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Contact & find us",
@@ -10,13 +15,15 @@ export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
 };
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const [t, settings] = await Promise.all([getContent(), getSettings()]);
+
   return (
     <>
       <PageHeader
-        label="Contact"
-        title="Find us at Vazon"
-        intro="On the beach on Guernsey's west coast, open every day from 8am until 5pm."
+        label={t["contact.label"]}
+        title={t["contact.title"]}
+        intro={t["contact.intro"]}
       />
 
       <section className="mx-auto max-w-6xl px-4 pb-16 pt-12 sm:px-6 sm:pb-24 sm:pt-16">
@@ -35,9 +42,9 @@ export default function ContactPage() {
                 </dt>
                 <dd className="mt-1.5">
                   <address className="not-italic leading-relaxed text-teal/85">
-                    {site.address.street}
+                    {settings.addressStreet}
                     <br />
-                    {site.address.region} {site.address.postcode}
+                    {settings.addressRegion} {settings.addressPostcode}
                   </address>
                 </dd>
               </div>
@@ -48,10 +55,10 @@ export default function ContactPage() {
                 </dt>
                 <dd className="mt-1.5">
                   <a
-                    href={site.phoneHref}
+                    href={telHref(settings.phone)}
                     className="font-medium underline decoration-oak underline-offset-4 hover:text-ray"
                   >
-                    {site.phone}
+                    {settings.phone}
                   </a>
                 </dd>
               </div>
@@ -62,10 +69,10 @@ export default function ContactPage() {
                 </dt>
                 <dd className="mt-1.5">
                   <a
-                    href={`mailto:${site.email}`}
+                    href={`mailto:${settings.email}`}
                     className="font-medium underline decoration-oak underline-offset-4 hover:text-ray"
                   >
-                    {site.email}
+                    {settings.email}
                   </a>
                 </dd>
               </div>
@@ -76,7 +83,7 @@ export default function ContactPage() {
                 </dt>
                 <dd className="mt-1.5">
                   <a
-                    href={site.facebook}
+                    href={settings.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 font-medium underline decoration-oak underline-offset-4 hover:text-ray"
@@ -99,7 +106,7 @@ export default function ContactPage() {
                 <dt className="text-xs font-semibold uppercase tracking-brand text-oak">
                   Opening hours
                 </dt>
-                <dd className="mt-1.5 text-teal/85">{site.hours.label}</dd>
+                <dd className="mt-1.5 text-teal/85">{settings.hoursLabel}</dd>
               </div>
             </dl>
           </div>
@@ -107,11 +114,11 @@ export default function ContactPage() {
           {/* Map */}
           <div>
             <div className="overflow-hidden rounded-3xl shadow-sm ring-1 ring-teal/10">
-              <MapEmbed />
+              <MapEmbed settings={settings} />
             </div>
             <p className="mt-4 text-sm">
               <a
-                href={site.mapsLink}
+                href={mapsLink(settings)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline decoration-oak underline-offset-4 hover:text-ray"
@@ -123,28 +130,25 @@ export default function ContactPage() {
         </div>
 
         <div className="mt-16 grid gap-6 md:grid-cols-2">
-          <Callout title="No reservations">
-            <p>
-              We don&rsquo;t take bookings for tables — it&rsquo;s walk-ins only,
-              every day. Just turn up and find a spot.
-            </p>
+          <Callout title={t["contact.noreservations.title"]}>
+            <p>{t["contact.noreservations.body"]}</p>
           </Callout>
 
-          <Callout title="Private events">
+          <Callout title={t["contact.private.title"]}>
             <p>
               Private bookings and events are very welcome. Email{" "}
               <a
-                href={`mailto:${site.email}`}
+                href={`mailto:${settings.email}`}
                 className="font-medium underline decoration-oak underline-offset-4 hover:text-ray"
               >
-                {site.email}
+                {settings.email}
               </a>{" "}
               or call{" "}
               <a
-                href={site.phoneHref}
+                href={telHref(settings.phone)}
                 className="font-medium underline decoration-oak underline-offset-4 hover:text-ray"
               >
-                {site.phone}
+                {settings.phone}
               </a>
               .
             </p>

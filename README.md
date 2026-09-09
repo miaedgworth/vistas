@@ -2,15 +2,18 @@
 
 Website for **Vistas Beach Cafe**, a beach cafe on Vazon Bay, Guernsey.
 
-Built with **Next.js (App Router)** + **Tailwind CSS v4**, statically exported
-(`output: "export"`) so every page is plain HTML — fast on a phone with one bar
-of signal on the beach.
+Built with **Next.js (App Router)** + **Tailwind CSS v4**, with content in
+**Postgres** so the owner can edit the site without touching code.
 
 ```bash
 npm install
-npm run dev     # http://localhost:3000
-npm run build   # static site written to ./out
+cp .env.example .env.local   # then fill in the three values
+npm run dev                  # http://localhost:3000
+npm run build
 ```
+
+Any Postgres works locally — you don't need Neon. Point `DATABASE_URL` at a
+local database and the app connects over TCP instead of Neon's HTTP driver.
 
 ## Pages
 
@@ -20,6 +23,7 @@ npm run build   # static site written to ./out
 | `/about` | The cafe, seating, merch & gift cards |
 | `/events` | Upcoming events, an autoplaying session video, past seasons as tabbed line-ups, private bookings |
 | `/contact` | Address, phone, email, Facebook, Google Map, opening hours |
+| `/admin` | Password-protected editing area (not linked from the site, not indexed) |
 
 ---
 
@@ -123,6 +127,75 @@ original vector files, use those instead — they'll be sharper again.
 
 ---
 
+---
+
+## The admin area
+
+`/admin` lets the owner change the site without a developer. Sign in with the
+shared password; changes appear on the public pages within a few seconds.
+
+| Section | What it does |
+|---|---|
+| **Events** | Add a season, edit its line-up date by date, and switch it between Upcoming and Past |
+| **Photos** | Upload pictures, reorder the home strip, edit descriptions, replace the hero |
+| **Text** | Change any wording on the site, and reset a block to its original |
+| **Hours & contact** | Opening hours, phone, email, address — these also feed the data Google reads |
+
+### The three settings it needs
+
+Set these in **Vercel → Settings → Environment Variables**, then redeploy.
+`.env.example` lists them; copy it to `.env.local` for local development.
+
+| Name | What it is |
+|---|---|
+| `DATABASE_URL` | Postgres connection string (Neon's pooled URL in production) |
+| `SESSION_SECRET` | Long random string that signs the login cookie |
+| `ADMIN_PASSWORD_HASH` | The admin password, hashed — never the password itself |
+
+**To change the password:**
+
+```bash
+npm run set-password -- 'the new password'
+```
+
+That prints a hash. Paste it into `ADMIN_PASSWORD_HASH` in Vercel and redeploy.
+Everyone signed in stays signed in until their session expires; change
+`SESSION_SECRET` too if you need to sign everyone out immediately.
+
+> Use a colon-separated hash, not `$`-separated. Loading a `.env` file expands
+> `$name` as a variable, which silently truncates the hash to `scrypt` and makes
+> every password wrong.
+
+### How content falls back
+
+Every page reads the database but keeps working without it. If `DATABASE_URL`
+is missing, the database is unreachable, or a table is simply empty, the page
+falls back to `data/defaults.ts` — the wording and photos the site shipped with.
+So a database outage degrades the site to its original content rather than
+taking it down, and a fresh database still renders a complete site.
+
+That's also why the admin area offers **Import** buttons: they copy the
+built-in events and photos into the database so there are real rows to edit.
+
+### Security
+
+- The password is stored only as a **scrypt** hash, compared in constant time
+- The session is a signed, `httpOnly`, `SameSite=Lax` cookie that expires after 12 hours
+- Failed logins are rate-limited per IP (8 attempts per 15 minutes)
+- `proxy.ts` turns away requests to `/admin` with no cookie, and **every** admin
+  page and action independently re-checks the session — server actions are
+  reachable directly, so middleware alone would not be enough
+- Uploads are limited to JPEG/PNG/WebP under 8MB
+- `/admin` is marked `noindex`
+
+### Where uploads live
+
+Uploaded images are stored in Postgres and served by `/media/[id]`, cached for
+a year (an upload is immutable — replacing a photo creates a new one). Keeping
+them in the database means image hosting needs no second set of credentials.
+It suits a cafe site's handful of photos; a gallery of thousands would want
+object storage instead.
+
 ## The session video
 
 `components/SessionVideo.tsx` plays `public/video/sundown-session.mp4` (with a
@@ -191,5 +264,9 @@ Type is **Jost** for headings (wide-tracked, matching the VISTAS wordmark) and
 
 ## Deploying
 
-Pushes to `main` deploy automatically on Vercel (project `vistas`). The build
-command is `npm run build`; output is the static `out/` directory.
+Pushes to the default branch deploy automatically on Vercel (project
+`vistas`). The build command is `npm run build`.
+
+The site is no longer a static export — the admin area writes to Postgres and
+the pages read from it, so pages render on the server and are refreshed when
+content is saved.

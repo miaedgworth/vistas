@@ -1,5 +1,3 @@
-import { site } from "@/data/site";
-
 /**
  * Drone footage of a Sundown Session.
  *
@@ -8,7 +6,7 @@ import { site } from "@/data/site";
  * taking the video fullscreen the moment it starts. The poster frame shows
  * while the file loads.
  */
-export default function SessionVideo() {
+export default function SessionVideo({ credit }: { credit: string }) {
   return (
     <figure className="m-0">
       <div className="overflow-hidden rounded-3xl bg-teal/5 shadow-sm ring-1 ring-teal/10">
@@ -32,9 +30,11 @@ export default function SessionVideo() {
           Your browser can&rsquo;t play this video.
         </video>
       </div>
-      <figcaption className="mt-4 text-center text-xs text-teal/60">
-        Video by {site.videoCredit}
-      </figcaption>
+      {credit && (
+        <figcaption className="mt-4 text-center text-xs text-teal/60">
+          Video by {credit}
+        </figcaption>
+      )}
     </figure>
   );
 }

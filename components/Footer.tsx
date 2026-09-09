@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { site } from "@/data/site";
+import { telHref, type SiteSettings } from "@/lib/content";
 
-export default function Footer() {
+export default function Footer({ settings }: { settings: SiteSettings }) {
   return (
     <footer className="bg-teal text-white">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[auto_1fr_auto] md:gap-14">
@@ -10,8 +10,8 @@ export default function Footer() {
           <Image
             src="/brand/logo-square-white.png"
             alt="Vistas Beach Cafe"
-            width={1024}
-            height={1024}
+            width={384}
+            height={384}
             className="h-28 w-28"
           />
         </div>
@@ -21,24 +21,24 @@ export default function Footer() {
             Find us
           </h2>
           <address className="not-italic text-white/90">
-            {site.address.street}
+            {settings.addressStreet}
             <br />
-            {site.address.region} {site.address.postcode}
+            {settings.addressRegion} {settings.addressPostcode}
           </address>
           <p>
             <a
-              href={site.phoneHref}
+              href={telHref(settings.phone)}
               className="underline decoration-white/40 underline-offset-4 hover:decoration-gold"
             >
-              {site.phone}
+              {settings.phone}
             </a>
           </p>
           <p>
             <a
-              href={`mailto:${site.email}`}
+              href={`mailto:${settings.email}`}
               className="underline decoration-white/40 underline-offset-4 hover:decoration-gold"
             >
-              {site.email}
+              {settings.email}
             </a>
           </p>
         </div>
@@ -47,21 +47,15 @@ export default function Footer() {
           <h2 className="text-xs font-semibold uppercase tracking-brand text-gold">
             Opening hours
           </h2>
-          <p className="text-white/90">{site.hours.label}</p>
+          <p className="text-white/90">{settings.hoursLabel}</p>
           <p className="text-white/70">No bookings needed.</p>
           <a
-            href={site.facebook}
+            href={settings.facebook}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 pt-1 hover:text-gold"
           >
-            <svg
-              width="22"
-              height="22"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              aria-hidden="true"
-            >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.5 2.9h-2.3v7A10 10 0 0 0 22 12Z" />
             </svg>
             <span>Vistas Beach Cafe on Facebook</span>
