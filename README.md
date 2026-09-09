@@ -16,9 +16,9 @@ npm run build   # static site written to ./out
 
 | Route | What's on it |
 |---|---|
-| `/` | Hero, opening-hours cards, intro, photo strip, Sundown Sessions teaser, Clean for Ice Cream (full section), address + map |
+| `/` | Photo hero, opening-hours cards, intro, photo strip, Clean for Ice Cream (full section), address + map |
 | `/about` | The cafe, seating, merch & gift cards |
-| `/events` | Sundown Sessions — tabbed line-ups by season, Facebook video link, private bookings |
+| `/events` | Upcoming events, an autoplaying session video, past seasons as tabbed line-ups, private bookings |
 | `/contact` | Address, phone, email, Facebook, Google Map, opening hours |
 
 ---
@@ -34,10 +34,13 @@ Line-ups are data, not markup. **Adding next year's season:**
 1. Copy an existing season object in the `seasons` array.
 2. Change `year`, `label`, `details` (the strip of text across the top of the
    poster) and `dates`.
-3. Put the new season **first** in the array.
+3. Set `status: "upcoming"` and put the new season **first** in the array.
 
-The first season in the array is the one the Events page opens on; every season
-after it is shown as a past season. No component changes needed.
+The Events page shows every season marked `"upcoming"` in full at the top, and
+files everything marked `"past"` under **Past events**. When a season finishes,
+change its `status` to `"past"` — that single edit is all it takes, and the
+page swaps to the "next summer's dates land in the spring" message on its own
+once nothing is upcoming. No component changes needed.
 
 Each date looks like this — `event`, `genre` and `time` are optional:
 
@@ -76,10 +79,23 @@ const photos = [
 ];
 ```
 
-Currently in `public/photos/`: `cake-counter.jpg`, `golden-hour-seating.jpg`,
-`inside-the-cafe.jpg` (home strip) and `merch.jpg` (About page). They're
-resized to 900px wide at quality 78 — plenty for the 4:5 frames, and small
-enough to load quickly on mobile data.
+Currently in `public/photos/`:
+
+| File | Where |
+|---|---|
+| `hero-sunset.jpg` | Home page hero |
+| `cake-counter.jpg`, `golden-hour-seating.jpg`, `inside-the-cafe.jpg` | Home photo strip |
+| `golden-hour-seating.jpg` | About page |
+| `merch.jpg` | About page, gift-cards callout |
+
+Strip photos are resized to 900px wide at quality 78 — plenty for the 4:5
+frames and small enough to load quickly on mobile data.
+
+**Replacing the hero:** drop a new landscape photo in as
+`public/photos/hero-sunset.jpg`. The hero text sits over the bottom of the
+image behind a scrim (`.scrim-hero` in `app/globals.css`), which is weighted to
+the foot of the frame so the sky stays vivid. If a new photo is dark at the
+bottom or busy behind the text, adjust those gradient stops.
 
 Images are shown in a 4:5 (portrait) frame and cropped to fill, so portrait
 photos work best. **Always write a real `alt` description** — it's what screen
@@ -103,27 +119,28 @@ original vector files, use those instead — they'll be sharper again.
 
 ---
 
+## The session video
+
+`components/SessionVideo.tsx` embeds the Facebook video via Facebook's video
+plugin with `autoplay=true`. Browsers only permit autoplay when a video is
+muted, so it starts muted and viewers unmute with the player's own control;
+Facebook also makes its own call on whether to autoplay (data saver, reduced
+motion, some mobile browsers). If it declines, the player still loads and plays
+on tap, and the link underneath always works.
+
+The video URL is `facebookVideo` in `data/site.ts`. The component strips the
+query string before handing it to the plugin, since share links carry tracking
+parameters the plugin chokes on. If the embed ever shows an error, replace it
+with the **canonical** post URL — the plugin is happier with
+`facebook.com/<page>/videos/<id>` than with a `/share/r/` link.
+
 ## Artwork
 
-Two illustrations in `public/images/` are hand-authored SVG in the brand
-palette (flat, poster-style, matching the Sundown Sessions look):
-
-- `hero-vazon-sunset.svg` — the home hero
-- `beach-clean.svg` — the Clean for Ice Cream section on the home page
-
-They're vector, so they stay sharp at any size and cost a few KB each. Edit
-them with any SVG tool, or replace them with photography — both are referenced
-from `app/page.tsx`.
-
-Clean for Ice Cream lives on the home page as a full section (anchored at
-`#clean-for-ice-cream`) rather than a page of its own, so it isn't in the top
-nav. The nav links are the `links` array at the top of `components/Nav.tsx`.
-
-The Google Map is `components/MapEmbed.tsx`, shared by the home and contact
-pages. It reads `mapsEmbed` from `data/site.ts` — no API key needed.
+The site now runs on photography throughout — the illustrated hero and
+beach-clean graphics have been retired.
 
 `design/brand-src/` holds the SVG marks drawn before the real logo files
-arrived. Nothing in the site uses them now; they're kept only as a fallback.
+arrived. Nothing in the site uses them; they're kept only as a fallback.
 
 ## Colours & type
 

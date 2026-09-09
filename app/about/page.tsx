@@ -14,6 +14,7 @@ export default function AboutPage() {
   return (
     <>
       <PageHeader
+        variant="plain"
         label="About"
         title="A beach cafe on Vazon Bay"
         intro="Right on the sand on Guernsey's west coast, open every day of the year from 8am until 5pm."
@@ -119,12 +120,9 @@ export default function AboutPage() {
           <p className="mt-3 text-white/80">
             No reservations — just turn up.
           </p>
-          <div className="mt-7 flex flex-wrap justify-center gap-3">
+          <div className="mt-7 flex justify-center">
             <Button href="/contact" variant="light">
               Find us
-            </Button>
-            <Button href="/events" variant="light">
-              Sundown Sessions
             </Button>
           </div>
         </div>

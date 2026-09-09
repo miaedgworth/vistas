@@ -2,9 +2,10 @@
  * Sundown Sessions line-ups.
  *
  * To add next year's season: copy a season object, change `year`, `label`,
- * `details` and `dates`, and put it at the top of `seasons`. The first season
- * in the array is the one the Events page opens on; every later season is
- * shown as a past season. No component changes needed.
+ * `details` and `dates`, set `status: "upcoming"`, and put it at the top of
+ * `seasons`. The Events page shows upcoming seasons in full at the top and
+ * files everything marked `"past"` under "Past events". When a season
+ * finishes, change its `status` to `"past"` — that is the only edit needed.
  */
 export type EventAct = {
   /** Date as shown on the poster, e.g. "Fri 5 Jun" */
@@ -26,6 +27,8 @@ export type EventAct = {
 export type Season = {
   year: number;
   label: string;
+  /** "upcoming" shows the season under Upcoming events; "past" files it away */
+  status: "upcoming" | "past";
   /** The strip of details printed across the top of the poster */
   details: string[];
   dates: EventAct[];
@@ -35,6 +38,7 @@ export const seasons: Season[] = [
   {
     year: 2026,
     label: "2026 Season",
+    status: "past",
     details: [
       "Live music",
       "Food until 7pm",
@@ -128,6 +132,7 @@ export const seasons: Season[] = [
   {
     year: 2025,
     label: "2025 Season",
+    status: "past",
     details: [
       "Music 5pm–10pm",
       "Food until 7pm",
@@ -190,3 +195,6 @@ export const seasons: Season[] = [
     ],
   },
 ];
+
+export const upcomingSeasons = seasons.filter((s) => s.status === "upcoming");
+export const pastSeasons = seasons.filter((s) => s.status === "past");

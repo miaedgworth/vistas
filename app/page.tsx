@@ -3,7 +3,6 @@ import Link from "next/link";
 import MapEmbed from "@/components/MapEmbed";
 import { Button, Callout, SectionLabel } from "@/components/ui";
 import { site } from "@/data/site";
-import { seasons } from "@/data/events";
 
 const quickCards = [
   {
@@ -55,42 +54,39 @@ const photos = [
 ];
 
 export default function HomePage() {
-  const nextSeason = seasons[0];
-
   return (
     <>
       {/* ---------------------------------------------------------- hero */}
-      <section className="relative isolate flex min-h-[78svh] items-center justify-center overflow-hidden sm:min-h-[86svh]">
+      <section className="relative isolate flex min-h-[80svh] items-end justify-center overflow-hidden sm:min-h-[88svh]">
         <Image
-          src="/images/hero-vazon-sunset.svg"
-          alt="Illustrated sunset over Vazon Bay, with the L'Erée headland, gulls and a paraglider"
+          src="/photos/hero-sunset.jpg"
+          alt="Sunset over Vazon Bay from the Vistas roof terrace, with a busy crowd on the deck and the sea beyond"
           fill
           priority
           sizes="100vw"
           className="-z-20 object-cover"
         />
-        <div className="scrim-sunset absolute inset-0 -z-10" aria-hidden="true" />
+        {/* Weighted to the foot of the frame: keeps the sky clear while giving
+            the text the contrast it needs over a bright sunset. */}
+        <div className="scrim-hero absolute inset-0 -z-10" aria-hidden="true" />
 
-        <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
+        <div className="mx-auto max-w-3xl px-4 pb-14 pt-24 text-center sm:px-6 sm:pb-20 sm:pt-32">
           <Image
             src="/brand/logo-badge-colour.png"
             alt=""
             width={1024}
             height={1024}
             priority
-            className="mx-auto h-28 w-28 drop-shadow-lg sm:h-36 sm:w-36"
+            className="mx-auto h-24 w-24 drop-shadow-lg sm:h-32 sm:w-32"
           />
           <h1 className="mt-8 text-3xl font-medium leading-tight tracking-brand text-white drop-shadow-md sm:text-5xl">
             The perfect place to watch Guernsey&rsquo;s stunning sunset.
           </h1>
-          <p className="mt-6 text-base text-white/90 drop-shadow sm:text-lg">
+          <p className="mt-5 text-base text-white drop-shadow sm:text-lg">
             A beach cafe on Vazon Bay, right on the sand.
           </p>
-          <div className="mt-9 flex flex-wrap justify-center gap-3">
-            <Button href="/events" variant="solid">
-              Sundown Sessions
-            </Button>
-            <Button href="/contact" variant="light">
+          <div className="mt-9 flex justify-center">
+            <Button href="/contact" variant="solid">
               Find us
             </Button>
           </div>
@@ -161,82 +157,41 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* --------------------------------------------------------- teasers */}
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
-        <div>
-          {/* Sundown Sessions */}
-          <article className="bg-sunset relative overflow-hidden rounded-3xl p-9 text-white sm:p-12">
-            <SectionLabel tone="light">Summer evenings</SectionLabel>
-            <h2 className="mt-4 text-3xl font-medium tracking-brand sm:text-4xl">
-              Sundown Sessions
-            </h2>
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/90">
-              DJs and live music at the cafe through the summer. Food served until
-              7pm, a mobile beer bar, and the sun going down over the bay behind
-              the decks. Limited capacity — turn up early.
-            </p>
-            <p className="mt-4 text-sm text-white/75">
-              {nextSeason.dates.length} dates across the {nextSeason.year} season.
-            </p>
-            <div className="mt-8">
-              <Button href="/events" variant="light">
-                See the {nextSeason.year} lineup
-              </Button>
-            </div>
-          </article>
-
-        </div>
-      </section>
-
       {/* --------------------------------------------- clean for ice cream */}
       <section
         id="clean-for-ice-cream"
         className="scroll-mt-20 bg-white/60 py-20 sm:py-24"
       >
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
-            <div className="overflow-hidden rounded-3xl shadow-sm ring-1 ring-teal/10">
-              <Image
-                src="/images/beach-clean.svg"
-                alt="A family beach clean at Vazon: an adult holding a beach-clean bag, a child with a litter picker, and an ice cream in the foreground"
-                width={800}
-                height={600}
-                sizes="(min-width: 768px) 50vw, 100vw"
-                className="w-full object-cover"
-              />
-            </div>
-
-            <div>
-              <SectionLabel>Our beach project</SectionLabel>
-              <h2 className="mt-4 text-3xl font-medium tracking-brand sm:text-4xl">
-                Clean for Ice Cream
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-teal/80">
-                Fill a bag with litter from Vazon beach, bring it back to the
-                cafe, and swap it for a free ice cream.
-              </p>
-              <ol className="mt-8 space-y-7">
-                {beachCleanSteps.map((step) => (
-                  <li key={step.n} className="flex gap-5">
-                    <span
-                      aria-hidden="true"
-                      className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-sage/40 text-sm font-semibold tracking-brand text-teal"
-                    >
-                      {step.n}
-                    </span>
-                    <div>
-                      <h3 className="text-lg font-medium tracking-brand">
-                        {step.title}
-                      </h3>
-                      <p className="mt-1.5 text-base leading-relaxed text-teal/80">
-                        {step.body}
-                      </p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </div>
+          <div className="mx-auto max-w-3xl text-center">
+            <SectionLabel>Our beach project</SectionLabel>
+            <h2 className="mt-4 text-3xl font-medium tracking-brand sm:text-4xl">
+              Clean for Ice Cream
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-teal/80 sm:text-lg">
+              Fill a bag with litter from Vazon beach, bring it back to the cafe,
+              and swap it for a free ice cream.
+            </p>
           </div>
+
+          <ol className="mx-auto mt-14 grid max-w-5xl gap-8 sm:grid-cols-3 sm:gap-10">
+            {beachCleanSteps.map((step) => (
+              <li key={step.n} className="text-center">
+                <span
+                  aria-hidden="true"
+                  className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-sage/40 text-base font-semibold tracking-brand text-teal"
+                >
+                  {step.n}
+                </span>
+                <h3 className="mt-5 text-lg font-medium tracking-brand">
+                  {step.title}
+                </h3>
+                <p className="mt-2 text-base leading-relaxed text-teal/80">
+                  {step.body}
+                </p>
+              </li>
+            ))}
+          </ol>
 
           <div className="mx-auto mt-14 max-w-3xl">
             <Callout title="Keeping Vazon the way we found it">

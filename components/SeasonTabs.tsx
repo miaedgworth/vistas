@@ -31,11 +31,6 @@ export default function SeasonTabs({ seasons }: { seasons: Season[] }) {
             }`}
           >
             {s.label}
-            {i > 0 && (
-              <span className="ml-2 font-normal normal-case tracking-normal opacity-70">
-                (past season)
-              </span>
-            )}
           </button>
         ))}
       </div>
