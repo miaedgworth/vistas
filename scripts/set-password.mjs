@@ -17,9 +17,16 @@ if (!password) {
   console.error("Usage: node scripts/set-password.mjs 'your new password'");
   process.exit(1);
 }
-if (password.length < 12) {
-  console.error("Please choose at least 12 characters.");
+if (password.length < 8) {
+  console.error("Please choose at least 8 characters.");
   process.exit(1);
+}
+if (password.length < 14) {
+  console.warn(
+    "\nNote: short passwords are easier to guess. Failed logins are rate\n" +
+      "limited to 8 per 15 minutes per IP, which blunts online guessing, but a\n" +
+      "longer passphrase is still the stronger choice.",
+  );
 }
 
 const salt = randomBytes(16);
