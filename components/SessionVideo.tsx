@@ -1,42 +1,36 @@
 import { site } from "@/data/site";
 
 /**
- * Facebook video of a Sundown Session, set to start on its own.
+ * Drone footage of a Sundown Session.
  *
- * Browsers only allow autoplay when the video is muted, so it starts muted —
- * viewers unmute with the player's own control. If Facebook declines to
- * autoplay (it makes its own call on data saver, reduced motion and mobile),
- * the player still loads and plays on tap, and the link underneath always
- * works.
+ * Autoplays muted — browsers only permit autoplay without sound — and loops.
+ * Controls are left on so viewers can unmute, and `playsInline` stops iOS
+ * taking the video fullscreen the moment it starts. The poster frame shows
+ * while the file loads.
  */
 export default function SessionVideo() {
-  // The plugin wants a bare post URL — the share link's tracking query
-  // (?mibextid=...) trips it up.
-  const href = site.facebookVideo.split("?")[0];
-
-  const src =
-    "https://www.facebook.com/plugins/video.php?" +
-    new URLSearchParams({
-      href,
-      show_text: "false",
-      autoplay: "true",
-      mute: "1",
-      width: "560",
-    }).toString();
-
   return (
     <figure className="m-0">
       <div className="overflow-hidden rounded-3xl bg-teal/5 shadow-sm ring-1 ring-teal/10">
-        <iframe
-          title="Video of a Sundown Session at Vistas Beach Cafe"
-          src={src}
-          className="aspect-video w-full border-0"
-          style={{ overflow: "hidden" }}
-          scrolling="no"
-          frameBorder="0"
-          allowFullScreen
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-        />
+        <video
+          className="h-auto w-full"
+          poster="/video/sundown-session-poster.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          controls
+          preload="metadata"
+          width={1272}
+          height={720}
+          aria-label="Drone footage of a Sundown Session at Vistas Beach Cafe, looking down on a busy roof terrace at sunset"
+        >
+          {/* VP9 first: ~30% smaller for browsers that take it. Safari and
+              anything else falls through to H.264. */}
+          <source src="/video/sundown-session.webm" type="video/webm" />
+          <source src="/video/sundown-session.mp4" type="video/mp4" />
+          Your browser can&rsquo;t play this video.
+        </video>
       </div>
       <figcaption className="mt-4 text-center text-xs text-teal/60">
         Video by {site.videoCredit}

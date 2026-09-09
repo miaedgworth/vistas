@@ -125,18 +125,32 @@ original vector files, use those instead — they'll be sharper again.
 
 ## The session video
 
-`components/SessionVideo.tsx` embeds the Facebook video via Facebook's video
-plugin with `autoplay=true`. Browsers only permit autoplay when a video is
-muted, so it starts muted and viewers unmute with the player's own control;
-Facebook also makes its own call on whether to autoplay (data saver, reduced
-motion, some mobile browsers). If it declines, the player still loads and plays
-on tap, and the link underneath always works.
+`components/SessionVideo.tsx` plays `public/video/sundown-session.mp4` (with a
+smaller VP9 `.webm` served first to browsers that take it). It autoplays muted
+and loops — browsers only permit autoplay without sound — with controls left on
+so viewers can unmute, and `playsInline` so iOS doesn't jump to fullscreen.
+`sundown-session-poster.jpg` shows while it loads.
 
-The video URL is `facebookVideo` in `data/site.ts`. The component strips the
-query string before handing it to the plugin, since share links carry tracking
-parameters the plugin chokes on. If the embed ever shows an error, replace it
-with the **canonical** post URL — the plugin is happier with
-`facebook.com/<page>/videos/<id>` than with a `/share/r/` link.
+**Replacing the video.** The source was a 14MB 31-second HEVC `.MOV`; HEVC does
+not play in Chrome, so it has to be transcoded. With `ffmpeg` installed:
+
+```bash
+# H.264 for Safari and everything else (~7MB)
+ffmpeg -i input.MOV -vf fps=30 -c:v libx264 -profile:v high -crf 26 -preset slow \
+  -pix_fmt yuv420p -c:a aac -b:a 96k -movflags +faststart \
+  public/video/sundown-session.mp4
+
+# VP9 for Chrome/Firefox/Edge (~5MB)
+ffmpeg -i input.MOV -vf fps=30 -c:v libvpx-vp9 -crf 40 -b:v 0 -row-mt 1 -speed 3 \
+  -c:a libopus -b:a 96k public/video/sundown-session.webm
+
+# poster frame, taken 3 seconds in
+ffmpeg -ss 3 -i input.MOV -frames:v 1 -q:v 4 public/video/sundown-session-poster.jpg
+```
+
+Keep it short and keep it small — visitors are on mobile data. `-movflags
++faststart` matters: without it the browser waits for the whole file before
+playing. The credit line under the video is `videoCredit` in `data/site.ts`.
 
 ## Artwork
 
