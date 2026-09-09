@@ -24,7 +24,7 @@ export default function EventsPage() {
       />
 
       {/* ------------------------------------------------ upcoming events */}
-      <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20">
+      <section className="mx-auto max-w-5xl px-4 pb-16 pt-12 sm:px-6 sm:pb-20 sm:pt-16">
         <div className="text-center">
           <SectionLabel>What&rsquo;s coming up</SectionLabel>
           <h2 className="mt-4 text-3xl font-medium tracking-brand sm:text-4xl">

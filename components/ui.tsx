@@ -20,47 +20,30 @@ export function SectionLabel({
   );
 }
 
+/**
+ * Page title. Sits on the page background with no banner behind it — the
+ * heading still carries the page's h1 for search engines and screen readers.
+ */
 export function PageHeader({
   label,
   title,
   intro,
-  variant = "gradient",
 }: {
   label: string;
   title: string;
   intro?: string;
-  /** "plain" opens the page on the warm sand background instead of the sunset */
-  variant?: "gradient" | "plain";
 }) {
-  const plain = variant === "plain";
-
   return (
-    <header
-      className={`relative overflow-hidden px-4 py-16 sm:px-6 sm:py-20 ${
-        plain ? "border-b border-oak/25 bg-cream/40 text-teal" : "bg-sunset text-white"
-      }`}
-    >
-      {!plain && (
-        <div
-          aria-hidden="true"
-          className="bg-sunset-glow pointer-events-none absolute inset-x-0 bottom-0 h-24"
-        />
+    <header className="mx-auto max-w-3xl px-4 pt-14 text-center sm:px-6 sm:pt-20">
+      <SectionLabel>{label}</SectionLabel>
+      <h1 className="mt-4 text-4xl font-medium tracking-brand sm:text-5xl">
+        {title}
+      </h1>
+      {intro && (
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-teal/80 sm:text-lg">
+          {intro}
+        </p>
       )}
-      <div className="relative mx-auto max-w-3xl text-center">
-        <SectionLabel tone={plain ? "teal" : "light"}>{label}</SectionLabel>
-        <h1 className="mt-4 text-4xl font-medium tracking-brand sm:text-5xl">
-          {title}
-        </h1>
-        {intro && (
-          <p
-            className={`mx-auto mt-6 max-w-2xl text-base leading-relaxed sm:text-lg ${
-              plain ? "text-teal/80" : "text-white/90"
-            }`}
-          >
-            {intro}
-          </p>
-        )}
-      </div>
     </header>
   );
 }

@@ -54,24 +54,15 @@
   .tracking-brand { letter-spacing: 0.24em; }
   .tracking-wordmark { letter-spacing: 0.42em; }
 
-  /* Sunset gradient for surfaces that carry white text. The poster pink
-     (--color-dusk-pink) is too light for AA contrast, so text-bearing
-     gradients land on --color-dusk-rose instead; the lighter pink is kept
-     for decorative, text-free glows via .bg-sunset-glow. */
+  /* Sunset gradient for surfaces that carry white text (the events poster
+     panel, the 404). The poster pink (--color-dusk-pink) is too light for AA
+     contrast against white, so it ends on --color-dusk-rose instead. */
   .bg-sunset {
     background-image: linear-gradient(
       170deg,
       var(--color-dusk-blue) 0%,
       var(--color-dusk-purple) 48%,
       var(--color-dusk-rose) 100%
-    );
-  }
-
-  .bg-sunset-glow {
-    background-image: linear-gradient(
-      to bottom,
-      transparent 0%,
-      color-mix(in srgb, var(--color-dusk-pink) 55%, transparent) 100%
     );
   }
 

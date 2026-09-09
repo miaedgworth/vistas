@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import MapEmbed from "@/components/MapEmbed";
-import { Button, Callout, SectionLabel } from "@/components/ui";
+import { Button, SectionLabel } from "@/components/ui";
 import { site } from "@/data/site";
 
 const quickCards = [
@@ -71,16 +71,16 @@ export default function HomePage() {
         <div className="scrim-hero absolute inset-0 -z-10" aria-hidden="true" />
 
         <div className="mx-auto max-w-3xl px-4 pb-14 pt-24 text-center sm:px-6 sm:pb-20 sm:pt-32">
-          <Image
-            src="/brand/logo-badge-colour.png"
-            alt=""
-            width={1024}
-            height={1024}
-            priority
-            className="mx-auto h-24 w-24 drop-shadow-lg sm:h-32 sm:w-32"
-          />
-          <h1 className="mt-8 text-3xl font-medium leading-tight tracking-brand text-white drop-shadow-md sm:text-5xl">
-            The perfect place to watch Guernsey&rsquo;s stunning sunset.
+          {/* The wordmark carries the page's h1; its alt text is the heading. */}
+          <h1>
+            <Image
+              src="/brand/logo-wordmark.png"
+              alt="Vistas Beach Cafe, Vazon, Guernsey"
+              width={900}
+              height={221}
+              priority
+              className="mx-auto h-auto w-72 drop-shadow-lg sm:w-[26rem]"
+            />
           </h1>
           <p className="mt-5 text-base text-white drop-shadow sm:text-lg">
             A beach cafe on Vazon Bay, right on the sand.
@@ -193,20 +193,6 @@ export default function HomePage() {
             ))}
           </ol>
 
-          <div className="mx-auto mt-14 max-w-3xl">
-            <Callout title="Keeping Vazon the way we found it">
-              <p>
-                Vazon is a working beach — surfers, swimmers, dog walkers,
-                families and a lot of weather. Whatever washes up tends to stay
-                up unless somebody picks it up. Clean for Ice Cream is our small
-                way of making that somebody a bit more likely, and it turns out
-                kids are very good at it.
-              </p>
-              <p className="mt-4">
-                Bring the family, take half an hour, and have an ice cream on us.
-              </p>
-            </Callout>
-          </div>
         </div>
       </section>
 

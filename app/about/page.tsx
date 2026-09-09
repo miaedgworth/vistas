@@ -14,13 +14,12 @@ export default function AboutPage() {
   return (
     <>
       <PageHeader
-        variant="plain"
         label="About"
         title="A beach cafe on Vazon Bay"
         intro="Right on the sand on Guernsey's west coast, open every day of the year from 8am until 5pm."
       />
 
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
+      <section className="mx-auto max-w-6xl px-4 pb-16 pt-12 sm:px-6 sm:pb-24 sm:pt-16">
         <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
           <div>
             <SectionLabel>The cafe</SectionLabel>

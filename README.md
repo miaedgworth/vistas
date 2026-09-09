@@ -16,7 +16,7 @@ npm run build   # static site written to ./out
 
 | Route | What's on it |
 |---|---|
-| `/` | Photo hero, opening-hours cards, intro, photo strip, Clean for Ice Cream (full section), address + map |
+| `/` | Photo hero with the wordmark, opening-hours cards, intro, photo strip, Clean for Ice Cream, address + map |
 | `/about` | The cafe, seating, merch & gift cards |
 | `/events` | Upcoming events, an autoplaying session video, past seasons as tabbed line-ups, private bookings |
 | `/contact` | Address, phone, email, Facebook, Google Map, opening hours |
@@ -90,6 +90,10 @@ Currently in `public/photos/`:
 
 Strip photos are resized to 900px wide at quality 78 — plenty for the 4:5
 frames and small enough to load quickly on mobile data.
+
+The hero shows the wordmark rather than a text heading — the `<h1>` wraps
+`logo-wordmark.png` and its `alt` text is what search engines and screen
+readers read, so keep that alt accurate if you swap the file.
 
 **Replacing the hero:** drop a new landscape photo in as
 `public/photos/hero-sunset.jpg`. The hero text sits over the bottom of the
