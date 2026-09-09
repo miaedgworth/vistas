@@ -22,16 +22,16 @@ const quickCards = [
 /* Photos live in /public/photos — swap these entries for your own files. */
 const photos = [
   {
-    src: "/photos/cake-counter.svg",
-    alt: "The Vistas cake counter, with an almond slice, doughnuts and chocolate slices",
+    src: "/photos/cake-counter.jpg",
+    alt: "The cake counter at Vistas: an almond slice, chocolate slices and sugared doughnuts in the glass display",
   },
   {
-    src: "/images/cafe-interior.svg",
-    alt: "Rattan chairs and timber slat walls inside Vistas, lit by golden-hour sun",
+    src: "/photos/golden-hour-seating.jpg",
+    alt: "Rattan chairs and timber slat walls inside Vistas, lit by low golden-hour sun",
   },
   {
-    src: "/photos/roof-terrace.svg",
-    alt: "The Vistas roof terrace looking out over Vazon Bay at sunset",
+    src: "/photos/inside-the-cafe.jpg",
+    alt: "Inside Vistas, looking past the rattan seating to the windows and the bay beyond",
   },
 ];
 
@@ -131,8 +131,8 @@ export default function HomePage() {
                 <Image
                   src={photo.src}
                   alt={photo.alt}
-                  width={640}
-                  height={800}
+                  width={900}
+                  height={1113}
                   sizes="(min-width: 640px) 33vw, 100vw"
                   className="aspect-4/5 w-full object-cover"
                 />

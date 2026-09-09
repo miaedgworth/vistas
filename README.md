@@ -77,6 +77,11 @@ const photos = [
 ];
 ```
 
+Currently in `public/photos/`: `cake-counter.jpg`, `golden-hour-seating.jpg`,
+`inside-the-cafe.jpg` (home strip) and `merch.jpg` (About page). They're
+resized to 900px wide at quality 78 — plenty for the 4:5 frames, and small
+enough to load quickly on mobile data.
+
 Images are shown in a 4:5 (portrait) frame and cropped to fill, so portrait
 photos work best. **Always write a real `alt` description** — it's what screen
 readers and search engines read.
@@ -91,21 +96,28 @@ readers and search engines read.
 
 Replacing any of these is a straight file swap — same filename, same place.
 
+All three are derived from the artwork supplied for this build. The badge is
+cut out of its white backdrop with a circular alpha mask; the wordmark and
+footer mark are keyed off their teal backdrop and stored as greyscale + alpha
+PNGs, which keeps the thin line art smooth at nav size. If you have the
+original vector files, use those instead — they'll be sharper again.
+
 ---
 
 ## Artwork
 
-The illustrations in `public/images/` and `public/photos/` are hand-authored
-SVG in the brand palette (flat, poster-style, matching the Sundown Sessions
-look). They're vector, so they stay sharp at any size and cost a few KB each.
+Two illustrations in `public/images/` are hand-authored SVG in the brand
+palette (flat, poster-style, matching the Sundown Sessions look):
 
-Source scripts aren't needed to edit them — they're plain SVG. The brand marks
-in `public/brand/*.png` are rasterised from the SVG sources kept in
-`design/brand-src/`; re-render them with any SVG tool if you need a different
-size.
+- `hero-vazon-sunset.svg` — the home hero
+- `beach-clean.svg` — the Clean for Ice Cream page
 
-**These are stand-ins.** Swap in the real logo files and cafe photography when
-you have them — same filenames, no code changes.
+They're vector, so they stay sharp at any size and cost a few KB each. Edit
+them with any SVG tool, or replace them with photography — they're referenced
+from `app/page.tsx` and `app/beach-clean/page.tsx`.
+
+`design/brand-src/` holds the SVG marks drawn before the real logo files
+arrived. Nothing in the site uses them now; they're kept only as a fallback.
 
 ## Colours & type
 

@@ -49,10 +49,10 @@ export default function AboutPage() {
 
           <div className="overflow-hidden rounded-3xl shadow-sm ring-1 ring-teal/10">
             <Image
-              src="/images/cafe-interior.svg"
-              alt="Inside Vistas: rattan chairs, timber slat walls and a window full of sunset over the sea"
+              src="/photos/golden-hour-seating.jpg"
+              alt="Rattan chairs and timber slat walls inside Vistas, lit by low golden-hour sun"
               width={900}
-              height={600}
+              height={1113}
               sizes="(min-width: 768px) 50vw, 100vw"
               className="w-full object-cover"
             />
@@ -95,11 +95,21 @@ export default function AboutPage() {
 
       <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24">
         <Callout title="Vistas merch & gift cards">
-          <p>
-            Reusable cups, keyrings and gift cards are available in the cafe —
-            worth a look on your way past the counter, and an easy present for
-            anyone who loves this stretch of coast.
-          </p>
+          <div className="grid gap-6 sm:grid-cols-[1fr_auto] sm:items-center">
+            <p>
+              Reusable cups, keyrings and gift cards are available in the cafe —
+              worth a look on your way past the counter, and an easy present for
+              anyone who loves this stretch of coast.
+            </p>
+            <Image
+              src="/photos/merch.jpg"
+              alt="Vistas reusable cups, gift cards and a keyring on a timber table"
+              width={800}
+              height={993}
+              sizes="(min-width: 640px) 15rem, 100vw"
+              className="w-full rounded-xl object-cover sm:w-60"
+            />
+          </div>
         </Callout>
 
         <div className="mt-12 rounded-2xl bg-teal px-7 py-9 text-center text-white sm:px-10">
