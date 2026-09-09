@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img">
+  <title>Vistas</title>
+  <rect x="14" y="14" width="484" height="484" rx="26" fill="none" stroke="#FFFFFF" stroke-width="13"/>
+  <circle cx="256" cy="190" r="44" fill="none" stroke="#FFFFFF" stroke-width="12"/>
+    <line x1="196.0" y1="190.0" x2="152.0" y2="190.0" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round"/>
+    <line x1="199.6" y1="169.5" x2="158.3" y2="154.4" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round"/>
+    <line x1="210.0" y1="151.4" x2="176.3" y2="123.2" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round"/>
+    <line x1="226.0" y1="138.0" x2="204.0" y2="99.9" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round"/>
+    <line x1="245.6" y1="130.9" x2="237.9" y2="87.6" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round"/>
+    <line x1="266.4" y1="130.9" x2="274.1" y2="87.6" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round"/>
+    <line x1="286.0" y1="138.0" x2="308.0" y2="99.9" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round"/>
+    <line x1="302.0" y1="151.4" x2="335.7" y2="123.2" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round"/>
+    <line x1="312.4" y1="169.5" x2="353.7" y2="154.4" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round"/>
+    <line x1="316.0" y1="190.0" x2="360.0" y2="190.0" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round"/>
+  <path d="M74,300 q45.5,-30 91,0 t91,0 t91,0 t91,0" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round"/>
+  <path d="M74,352 q45.5,-30 91,0 t91,0 t91,0 t91,0" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round"/>
+  <g transform="rotate(-24 256 322)">
+    <ellipse cx="256" cy="322" rx="26" ry="86" fill="none" stroke="#FFFFFF" stroke-width="12"/>
+  </g>
+  <line x1="74" y1="404" x2="438" y2="404" stroke="#FFFFFF" stroke-width="10"/>
+  <text x="256" y="458" text-anchor="middle" fill="#FFFFFF"
+        font-family="Jost, Montserrat, 'DejaVu Sans', sans-serif" font-size="58"
+        font-weight="500" letter-spacing="15">VISTAS</text>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img">
+  <title>Vistas Beach Cafe</title>
+  <circle cx="256" cy="256" r="248" fill="#F5DEB8"/>
+  <circle cx="256" cy="256" r="248" fill="none" stroke="#2A4E5A" stroke-width="14"/>
+  <clipPath id="disc"><circle cx="256" cy="256" r="228"/></clipPath>
+  <g clip-path="url(#disc)">
+    <rect x="0" y="0" width="512" height="512" fill="#FBF3E4"/>
+    <path d="M160.28,263.37 L160.00,255.33 L60.00,254.63 L60.58,271.04 Z" fill="#F58A3C"/>
+    <path d="M160.19,249.97 L161.03,241.98 L62.10,227.37 L60.39,243.69 Z" fill="#F5DEB8"/>
+    <path d="M161.96,236.70 L163.91,228.90 L67.97,200.66 L64.00,216.59 Z" fill="#F58A3C"/>
+    <path d="M165.56,223.80 L168.57,216.34 L77.51,175.03 L71.36,190.25 Z" fill="#F5DEB8"/>
+    <path d="M170.92,211.52 L174.94,204.56 L90.51,150.98 L82.30,165.19 Z" fill="#F58A3C"/>
+    <path d="M177.94,200.12 L182.89,193.78 L106.74,128.97 L96.63,141.90 Z" fill="#F5DEB8"/>
+    <path d="M186.48,189.80 L192.26,184.21 L125.87,109.43 L114.06,120.83 Z" fill="#F58A3C"/>
+    <path d="M196.37,180.77 L202.87,176.04 L147.54,92.75 L134.26,102.40 Z" fill="#F5DEB8"/>
+    <path d="M207.42,173.20 L214.52,169.42 L171.31,79.24 L156.82,86.95 Z" fill="#F58A3C"/>
+    <path d="M219.42,167.24 L226.97,164.49 L196.74,69.17 L181.31,74.79 Z" fill="#F5DEB8"/>
+    <path d="M232.13,163.02 L239.99,161.34 L223.31,62.74 L207.26,66.16 Z" fill="#F58A3C"/>
+    <path d="M245.30,160.60 L253.32,160.04 L250.53,60.08 L234.15,61.22 Z" fill="#F5DEB8"/>
+    <path d="M258.68,160.04 L266.70,160.60 L277.85,61.22 L261.47,60.08 Z" fill="#F58A3C"/>
+    <path d="M272.01,161.34 L279.87,163.02 L304.74,66.16 L288.69,62.74 Z" fill="#F5DEB8"/>
+    <path d="M285.03,164.49 L292.58,167.24 L330.69,74.79 L315.26,69.17 Z" fill="#F58A3C"/>
+    <path d="M297.48,169.42 L304.58,173.20 L355.18,86.95 L340.69,79.24 Z" fill="#F5DEB8"/>
+    <path d="M309.13,176.04 L315.63,180.77 L377.74,102.40 L364.46,92.75 Z" fill="#F58A3C"/>
+    <path d="M319.74,184.21 L325.52,189.80 L397.94,120.83 L386.13,109.43 Z" fill="#F5DEB8"/>
+    <path d="M329.11,193.78 L334.06,200.12 L415.37,141.90 L405.26,128.97 Z" fill="#F58A3C"/>
+    <path d="M337.06,204.56 L341.08,211.52 L429.70,165.19 L421.49,150.98 Z" fill="#F5DEB8"/>
+    <path d="M343.43,216.34 L346.44,223.80 L440.64,190.25 L434.49,175.03 Z" fill="#F58A3C"/>
+    <path d="M348.09,228.90 L350.04,236.70 L448.00,216.59 L444.03,200.66 Z" fill="#F5DEB8"/>
+    <path d="M350.97,241.98 L351.81,249.97 L451.61,243.69 L449.90,227.37 Z" fill="#F58A3C"/>
+    <path d="M352.00,255.33 L351.72,263.37 L451.42,271.04 L452.00,254.63 Z" fill="#F5DEB8"/>
+    <circle cx="256" cy="256" r="92" fill="#E8A33D"/>
+    <circle cx="256" cy="256" r="92" fill="none" stroke="#2A4E5A" stroke-width="9"/>
+
+    <!-- sea -->
+    <rect x="0" y="300" width="512" height="212" fill="#FBF3E4"/>
+    <path d="M0,330 q42,-26 84,0 t84,0 t84,0 t84,0 t84,0 t84,0 L512,512 L0,512 Z" fill="#8FB3DA"/>
+    <path d="M0,330 q42,-26 84,0 t84,0 t84,0 t84,0 t84,0 t84,0" fill="none" stroke="#2A4E5A" stroke-width="9"/>
+    <path d="M0,398 q42,-26 84,0 t84,0 t84,0 t84,0 t84,0 t84,0 L512,512 L0,512 Z" fill="#8FC1A7"/>
+    <path d="M0,398 q42,-26 84,0 t84,0 t84,0 t84,0 t84,0 t84,0" fill="none" stroke="#2A4E5A" stroke-width="9"/>
+
+    <!-- surfboard -->
+    <g transform="rotate(-24 256 336)">
+      <ellipse cx="256" cy="336" rx="34" ry="116" fill="#FFFFFF" stroke="#2A4E5A" stroke-width="9"/>
+      <line x1="256" y1="248" x2="256" y2="424" stroke="#2A4E5A" stroke-width="7"/>
+    </g>
+  </g>
+  <circle cx="256" cy="256" r="228" fill="none" stroke="#2A4E5A" stroke-width="9"/>
+</svg>

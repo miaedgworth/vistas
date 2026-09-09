@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand palette — pulled from the colour badge */
+  --color-teal: #2a4e5a;
+  --color-teal-deep: #1e3a45;
+  --color-ray: #f58a3c;
+  --color-cream: #f5deb8;
+  --color-gold: #e8a33d;
+  --color-sea: #8fb3da;
+  --color-sage: #8fc1a7;
+
+  /* Sunset gradient stops (Sundown Sessions posters) */
+  --color-dusk-blue: #1e3a8a;
+  --color-dusk-purple: #5b3fa0;
+  --color-dusk-pink: #e9a6c6;
+  --color-dusk-rose: #9c4675;
+
+  /* Warm neutrals for content sections */
+  --color-sand: #f6efe4;
+  --color-oak: #c9a06a;
+
+  --font-display: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-sand);
+    color: var(--color-teal);
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: 0.02em;
+  }
+
+  /* Visible focus for keyboard users on every interactive element */
+  :focus-visible {
+    outline: 3px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@layer utilities {
+  /* Wide-tracked headings matching the VISTAS wordmark */
+  .tracking-brand { letter-spacing: 0.24em; }
+  .tracking-wordmark { letter-spacing: 0.42em; }
+
+  /* Sunset gradient for surfaces that carry white text. The poster pink
+     (--color-dusk-pink) is too light for AA contrast, so text-bearing
+     gradients land on --color-dusk-rose instead; the lighter pink is kept
+     for decorative, text-free glows via .bg-sunset-glow. */
+  .bg-sunset {
+    background-image: linear-gradient(
+      170deg,
+      var(--color-dusk-blue) 0%,
+      var(--color-dusk-purple) 48%,
+      var(--color-dusk-rose) 100%
+    );
+  }
+
+  .bg-sunset-glow {
+    background-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      color-mix(in srgb, var(--color-dusk-pink) 55%, transparent) 100%
+    );
+  }
+
+  /* Warm scrim so white text keeps contrast over illustrations */
+  .scrim-sunset {
+    background-image: linear-gradient(
+      to top,
+      rgb(30 58 69 / 0.72) 0%,
+      rgb(30 58 69 / 0.42) 34%,
+      rgb(30 58 69 / 0.22) 62%,
+      rgb(30 58 69 / 0.34) 100%
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

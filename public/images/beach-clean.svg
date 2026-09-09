@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img">
+  <defs><filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+    <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#A9CBEA"/><stop offset="100%" stop-color="#DCEAF5"/>
+    </linearGradient>
+    <linearGradient id="snd" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E7CCA4"/><stop offset="100%" stop-color="#F6EFE4"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#sky2)"/>
+  <circle cx="122" cy="106" r="52" fill="#E8A33D"/>
+  <g stroke="#E8A33D" stroke-width="8" stroke-linecap="round" opacity="0.75">
+    <line x1="122" y1="20" x2="122" y2="40"/><line x1="122" y1="172" x2="122" y2="192"/>
+    <line x1="36" y1="106" x2="56" y2="106"/><line x1="188" y1="106" x2="208" y2="106"/>
+    <line x1="61" y1="45" x2="75" y2="59"/><line x1="169" y1="153" x2="183" y2="167"/>
+    <line x1="61" y1="167" x2="75" y2="153"/><line x1="169" y1="59" x2="183" y2="45"/>
+  </g>
+  <g fill="none" stroke="#2A4E5A" stroke-width="5" stroke-linecap="round" opacity="0.8">
+    <path d="M556,96 q13,-16 26,0 q13,-16 26,0"/>
+    <path d="M636,60 q10,-13 20,0 q10,-13 20,0"/>
+  </g>
+
+  <!-- sea -->
+  <path d="M0,288 q100,-22 200,0 t200,0 t200,0 t200,0 L800,368 L0,368 Z" fill="#8FB3DA"/>
+  <path d="M0,330 q100,-22 200,0 t200,0 t200,0 t200,0 L800,400 L0,400 Z" fill="#8FC1A7"/>
+  <path d="M0,326 q100,-22 200,0 t200,0 t200,0 t200,0" fill="none" stroke="#FFFFFF" stroke-width="6" opacity="0.8"/>
+  <rect x="0" y="392" width="800" height="208" fill="url(#snd)"/>
+  <path d="M0,392 q120,-20 240,-2 q140,18 280,-2 q150,-18 280,4 L800,600 L0,600 Z" fill="url(#snd)"/>
+
+  <!-- adult with bag -->
+  <g>
+    <circle cx="300" cy="256" r="34" fill="#2A4E5A"/>
+    <path d="M266,300 q34,-14 68,0 l14,116 h-96 z" fill="#F58A3C"/>
+    <path d="M334,308 l40,66" stroke="#2A4E5A" stroke-width="13" stroke-linecap="round" fill="none"/>
+    <path d="M266,308 l-30,56" stroke="#2A4E5A" stroke-width="13" stroke-linecap="round" fill="none"/>
+    <g fill="#2A4E5A"><rect x="278" y="410" width="16" height="80" rx="8"/><rect x="308" y="410" width="16" height="80" rx="8"/></g>
+    <!-- beach-clean bag -->
+    <path d="M356,372 h74 l-12,110 h-50 z" fill="#8FC1A7" stroke="#2A4E5A" stroke-width="6"/>
+    <path d="M362,372 q31,-30 62,0" fill="none" stroke="#2A4E5A" stroke-width="6"/>
+  </g>
+
+  <!-- child with litter picker -->
+  <g>
+    <circle cx="470" cy="322" r="26" fill="#2A4E5A"/>
+    <path d="M444,356 q26,-11 52,0 l10,86 h-72 z" fill="#8FB3DA"/>
+    <path d="M496,364 l30,26" stroke="#2A4E5A" stroke-width="11" stroke-linecap="round" fill="none"/>
+    <g fill="#2A4E5A"><rect x="454" y="436" width="14" height="58" rx="7"/><rect x="478" y="436" width="14" height="58" rx="7"/></g>
+    <line x1="526" y1="386" x2="586" y2="490" stroke="#C9A06A" stroke-width="9" stroke-linecap="round"/>
+    <path d="M580,482 l16,-8 M586,490 l18,2" stroke="#2A4E5A" stroke-width="7" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- litter -->
+  <g opacity="0.9">
+    <rect x="196" y="516" width="30" height="13" rx="6" fill="#8FB3DA" transform="rotate(-16 196 516)"/>
+    <rect x="640" y="536" width="26" height="12" rx="6" fill="#F58A3C" transform="rotate(12 640 536)"/>
+    <circle cx="128" cy="470" r="8" fill="#8FC1A7"/>
+  </g>
+
+  <!-- ice cream, foreground -->
+  <g transform="translate(690 400)">
+    <path d="M-34,44 L0,150 L34,44 Z" fill="#C9A06A" stroke="#2A4E5A" stroke-width="6"/>
+    <path d="M-24,60 L24,60 M-16,86 L16,86" stroke="#2A4E5A" stroke-width="4" opacity="0.7"/>
+    <path d="M-40,44 a40,40 0 0 1 80,0 z" fill="#FFFFFF" stroke="#2A4E5A" stroke-width="6"/>
+    <circle cx="-12" cy="8" r="22" fill="#FFFFFF" stroke="#2A4E5A" stroke-width="6"/>
+    <circle cx="16" cy="0" r="20" fill="#FFF8EE" stroke="#2A4E5A" stroke-width="6"/>
+    <circle cx="2" cy="-26" r="18" fill="#FFFFFF" stroke="#2A4E5A" stroke-width="6"/>
+  </g>
+  <rect width="800" height="600" filter="url(#g)" opacity="0.05" style="mix-blend-mode:overlay"/>
+</svg>

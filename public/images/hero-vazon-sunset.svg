@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#12285F"/>
+      <stop offset="26%" stop-color="#1E3A8A"/>
+      <stop offset="55%" stop-color="#5B3FA0"/>
+      <stop offset="82%" stop-color="#B0699C"/>
+      <stop offset="100%" stop-color="#E9A6C6"/>
+    </linearGradient>
+    <linearGradient id="sundisc" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FBEBCB"/>
+      <stop offset="52%" stop-color="#E8A33D"/>
+      <stop offset="100%" stop-color="#F58A3C"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#A88BB8"/>
+      <stop offset="7%" stop-color="#91A0C4"/>
+      <stop offset="18%" stop-color="#8AA5CC"/>
+      <stop offset="48%" stop-color="#7FA6CF"/>
+      <stop offset="100%" stop-color="#A9C6DF"/>
+    </linearGradient>
+    <linearGradient id="sand" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#DFBE97"/>
+      <stop offset="100%" stop-color="#EFD8B6"/>
+    </linearGradient>
+    <clipPath id="skyClip"><rect x="0" y="0" width="1600" height="548.0"/></clipPath>
+    <clipPath id="seaClip"><rect x="0" y="548.0" width="1600" height="352.0"/></clipPath>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#sky)"/>
+
+  <g clip-path="url(#skyClip)">
+      <path d="M620.0,548.0 L-1175.6,422.1 L-1142.7,183.6 Z" fill="#F58A3C" opacity="0.17"/>
+      <path d="M620.0,548.0 L-1094.7,0.6 L-1006.4,-223.3 Z" fill="#F5DEB8" opacity="0.1"/>
+      <path d="M620.0,548.0 L-916.4,-389.7 L-777.6,-586.4 Z" fill="#F58A3C" opacity="0.17"/>
+      <path d="M620.0,548.0 L-650.8,-726.8 L-469.4,-884.9 Z" fill="#F5DEB8" opacity="0.1"/>
+      <path d="M620.0,548.0 L-312.9,-991.4 L-99.2,-1102.1 Z" fill="#F58A3C" opacity="0.17"/>
+      <path d="M620.0,548.0 L77.9,-1168.4 L311.8,-1225.4 Z" fill="#F5DEB8" opacity="0.1"/>
+      <path d="M620.0,548.0 L499.6,-1248.0 L740.4,-1248.0 Z" fill="#F58A3C" opacity="0.17"/>
+      <path d="M620.0,548.0 L928.2,-1225.4 L1162.1,-1168.4 Z" fill="#F5DEB8" opacity="0.1"/>
+      <path d="M620.0,548.0 L1339.2,-1102.1 L1552.9,-991.4 Z" fill="#F58A3C" opacity="0.17"/>
+      <path d="M620.0,548.0 L1709.4,-884.9 L1890.8,-726.8 Z" fill="#F5DEB8" opacity="0.1"/>
+      <path d="M620.0,548.0 L2017.6,-586.4 L2156.4,-389.7 Z" fill="#F58A3C" opacity="0.17"/>
+      <path d="M620.0,548.0 L2246.4,-223.3 L2334.7,0.6 Z" fill="#F5DEB8" opacity="0.1"/>
+      <path d="M620.0,548.0 L2382.7,183.6 L2415.6,422.1 Z" fill="#F58A3C" opacity="0.17"/>
+      <circle cx="620.0" cy="548.0" r="162" fill="none" stroke="#F5DEB8" stroke-width="4.0" opacity="0.30"/>
+      <circle cx="620.0" cy="548.0" r="208" fill="none" stroke="#F5DEB8" stroke-width="3.2" opacity="0.22"/>
+      <circle cx="620.0" cy="548.0" r="258" fill="none" stroke="#F5DEB8" stroke-width="2.4" opacity="0.14"/>
+    <ellipse cx="620.0" cy="548.0" rx="330" ry="210" fill="#F58A3C" opacity="0.20"/>
+    <ellipse cx="620.0" cy="548.0" rx="200" ry="140" fill="#E8A33D" opacity="0.22"/>
+  </g>
+
+  <g>
+      <path d="M266.5,232 q9.8,-12.3 19.5,0 q9.8,-12.3 19.5,0" fill="none" stroke="#2A4E5A" stroke-width="3.9" stroke-linecap="round" opacity="0.8"/>
+      <path d="M373.8,180 q7.1,-9.0 14.2,0 q7.1,-9.0 14.2,0" fill="none" stroke="#2A4E5A" stroke-width="2.8" stroke-linecap="round" opacity="0.8"/>
+      <path d="M202.8,300 q5.6,-7.1 11.2,0 q5.6,-7.1 11.2,0" fill="none" stroke="#2A4E5A" stroke-width="2.2" stroke-linecap="round" opacity="0.55"/>
+      <path d="M1232.2,286 q7.9,-10.0 15.8,0 q7.9,-10.0 15.8,0" fill="none" stroke="#2A4E5A" stroke-width="3.2" stroke-linecap="round" opacity="0.8"/>
+      <path d="M1320.3,232 q5.9,-7.4 11.7,0 q5.9,-7.4 11.7,0" fill="none" stroke="#2A4E5A" stroke-width="2.3" stroke-linecap="round" opacity="0.62"/>
+  </g>
+
+  <!-- paraglider -->
+  <g opacity="0.95">
+    <path d="M1040,176 q66,-62 132,0 q-16,-8 -33,-6 q-33,-30 -66,0 q-17,-2 -33,6 Z" fill="#F58A3C"/>
+    <path d="M1040,176 q66,-62 132,0" fill="none" stroke="#2A4E5A" stroke-width="4"/>
+    <path d="M1050,178 L1106,238 M1162,178 L1106,238" stroke="#2A4E5A" stroke-width="2.6" opacity="0.9"/>
+    <circle cx="1106" cy="245" r="8.5" fill="#2A4E5A"/>
+  </g>
+
+  <!-- sun -->
+  <circle cx="620.0" cy="548.0" r="118.0" fill="url(#sundisc)"/>
+
+  <!-- L'Eree headland, right -->
+  <path d="M998,548.0 L1074,516 q40,-30 84,-14 q34,-44 88,-30 q46,-40 104,-10
+           q44,-26 96,0 q46,-16 90,8 q40,-12 76,2 L1600,548.0 Z" fill="#2A4E5A"/>
+  <path d="M1074,516 q40,-30 84,-14 q34,-44 88,-30 q46,-40 104,-10"
+        fill="none" stroke="#3E6675" stroke-width="3" opacity="0.7"/>
+  <!-- low rocks, left -->
+  <path d="M0,548.0 L0,528 q58,-12 116,6 q48,-16 98,10 L246,548.0 Z" fill="#2A4E5A" opacity="0.72"/>
+
+  <!-- sea -->
+  <g clip-path="url(#seaClip)">
+    <rect x="0" y="548.0" width="1600" height="352.0" fill="url(#water)"/>
+      <rect x="608.2" y="556.0" width="27.5" height="4.7" rx="2.4" fill="#E8A33D" opacity="0.69"/>
+      <rect x="607.5" y="566.5" width="29.9" height="5.0" rx="2.5" fill="#E8A33D" opacity="0.68"/>
+      <rect x="603.7" y="577.7" width="32.7" height="5.3" rx="2.6" fill="#E8A33D" opacity="0.67"/>
+      <rect x="593.9" y="589.5" width="46.0" height="5.6" rx="2.8" fill="#E8A33D" opacity="0.66"/>
+      <rect x="582.9" y="589.5" width="14.9" height="5.6" rx="2.8" fill="#E8A33D" opacity="0.46"/>
+      <rect x="594.0" y="602.1" width="54.2" height="5.9" rx="2.9" fill="#E8A33D" opacity="0.65"/>
+      <rect x="662.7" y="602.1" width="16.7" height="5.9" rx="2.9" fill="#E8A33D" opacity="0.41"/>
+      <rect x="593.3" y="615.5" width="62.2" height="6.2" rx="3.1" fill="#E8A33D" opacity="0.63"/>
+      <rect x="586.8" y="629.7" width="56.8" height="6.6" rx="3.3" fill="#E8A33D" opacity="0.62"/>
+      <rect x="584.9" y="644.8" width="79.8" height="7.0" rx="3.5" fill="#E8A33D" opacity="0.61"/>
+      <rect x="584.4" y="660.9" width="84.5" height="7.4" rx="3.7" fill="#E8A33D" opacity="0.59"/>
+      <rect x="572.0" y="677.9" width="87.0" height="7.8" rx="3.9" fill="#E8A33D" opacity="0.57"/>
+      <rect x="524.1" y="677.9" width="21.9" height="7.8" rx="3.9" fill="#E8A33D" opacity="0.31"/>
+      <rect x="564.7" y="696.0" width="127.1" height="8.3" rx="4.1" fill="#E8A33D" opacity="0.56"/>
+      <rect x="711.1" y="696.0" width="43.1" height="8.3" rx="4.1" fill="#E8A33D" opacity="0.34"/>
+      <rect x="577.3" y="715.3" width="99.7" height="8.8" rx="4.4" fill="#E8A33D" opacity="0.54"/>
+      <rect x="558.0" y="735.7" width="111.7" height="9.3" rx="4.7" fill="#E8A33D" opacity="0.52"/>
+      <rect x="547.1" y="757.5" width="168.3" height="9.9" rx="4.9" fill="#E8A33D" opacity="0.50"/>
+      <rect x="564.9" y="780.6" width="140.6" height="10.4" rx="5.2" fill="#E8A33D" opacity="0.48"/>
+      <rect x="553.6" y="805.1" width="170.1" height="11.1" rx="5.5" fill="#E8A33D" opacity="0.45"/>
+      <rect x="531.9" y="831.2" width="181.9" height="11.7" rx="5.9" fill="#E8A33D" opacity="0.43"/>
+      <rect x="496.8" y="858.9" width="225.1" height="12.4" rx="6.2" fill="#E8A33D" opacity="0.40"/>
+    <path d="M0,634 q130,-20 260,-2 t260,2 t260,-2 t260,2 t260,-2 t260,2 L1600,684 L0,684 Z" fill="#8FC1A7" opacity="0.34"/>
+    <path d="M0,628 q130,-20 260,-2 t260,2 t260,-2 t260,2 t260,-2 t260,2" fill="none" stroke="#F5DEB8" stroke-width="3" opacity="0.42"/>
+    <path d="M0,712 q150,-26 300,-4 t300,4 t300,-4 t300,4 t300,-4 L1600,768 L0,768 Z" fill="#8FB3DA" opacity="0.55"/>
+    <path d="M0,708 q150,-26 300,-4 t300,4 t300,-4 t300,4 t300,-4" fill="none" stroke="#F5DEB8" stroke-width="3.6" opacity="0.55"/>
+    <path d="M0,790 q160,-30 320,-6 q170,26 340,0 q180,-26 360,2 q170,24 340,-6 q120,-18 240,4 L1600,846 L0,846 Z" fill="#CBDCEA" opacity="0.85"/>
+    <path d="M0,790 q160,-30 320,-6 q170,26 340,0 q180,-26 360,2 q170,24 340,-6 q120,-18 240,4" fill="none" stroke="#FFFFFF" stroke-width="4.5" opacity="0.8"/>
+
+    <!-- wet sand -->
+    <path d="M0,838 q170,-24 340,-2 q170,22 340,-2 q180,-24 360,2 q170,22 340,-4 q110,-16 220,4 L1600,900 L0,900 Z" fill="url(#sand)"/>
+    <ellipse cx="620.0" cy="878" rx="270" ry="30" fill="#E8A33D" opacity="0.26"/>
+    <path d="M120,884 q60,-10 120,-2" fill="none" stroke="#CBA47B" stroke-width="3" opacity="0.5"/>
+    <path d="M1280,872 q70,-12 140,-2" fill="none" stroke="#CBA47B" stroke-width="3" opacity="0.45"/>
+  </g>
+
+  <rect width="1600" height="900" filter="url(#grain)" opacity="0.05" style="mix-blend-mode:overlay"/>
+</svg>
